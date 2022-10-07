@@ -11,26 +11,26 @@ SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}")
 
 project (uuid_v4)
 
-option(test "Build all tests." OFF)
-option(benchmark "Build benchmarks." OFF)
+option(uuid_test "Build all tests." OFF)
+option(uuid_benchmark "Build benchmarks." OFF)
 
-IF (test)
+IF (uuid_test)
   # build tests (targets: gtest_main, gtest)
   add_subdirectory(vendor/google/googletest/googletest)
   target_compile_options (gtest PRIVATE "-Wno-error=misleading-indentation")
 
   enable_testing ()
   add_subdirectory (tests)
-ENDIF (test)
+ENDIF (uuid_test)
 
-IF (benchmark)
+IF (uuid_benchmark)
   # build google benchmark (target: benchmark)
   # do not build tests of benchmarking lib
   set(BENCHMARK_ENABLE_TESTING OFF CACHE BOOL "Suppressing benchmark's tests" FORCE)
   add_subdirectory(vendor/google/benchmark)
 
   add_subdirectory (benchmarks)
-ENDIF (benchmark)
+ENDIF (uuid_benchmark)
 
 add_executable(example example.cpp)
 target_link_libraries (example)
