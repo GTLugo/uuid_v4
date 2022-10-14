@@ -1,6 +1,8 @@
 [submodule "vendor/google/googletest"]
+  ignore = dirty
 	path = vendor/google/googletest
 	url = https://github.com/google/googletest.git
 [submodule "vendor/google/benchmark"]
+  ignore = dirty
 	path = vendor/google/benchmark
 	url = https://github.com/google/benchmark.git
